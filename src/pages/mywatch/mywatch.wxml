@@ -1,0 +1,2 @@
+<view class='watch-container'> my watch test page</view>
+<view >{{message}}</view>

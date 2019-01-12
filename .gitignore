@@ -1,5 +1,5 @@
-.git/
-dist/
+typings
+ist/
 node_modules/
 package-lock.json
 .editorconfig

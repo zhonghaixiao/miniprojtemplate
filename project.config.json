@@ -4,11 +4,12 @@
     "ignore": []
   },
   "setting": {
-    "urlCheck": true,
+    "urlCheck": false,
     "es6": true,
     "postcss": true,
     "minified": true,
     "newFeature": true,
+    "nodeModules": true,
     "autoAudits": false
   },
   "compileType": "miniprogram",
@@ -29,13 +30,36 @@
       "current": -1,
       "list": []
     },
+    "plugin": {
+      "current": -1,
+      "list": []
+    },
     "game": {
       "currentL": -1,
       "list": []
     },
     "miniprogram": {
-      "current": -1,
-      "list": []
+      "current": 2,
+      "list": [
+        {
+          "id": -1,
+          "name": "index",
+          "pathName": "pages/index/index",
+          "query": ""
+        },
+        {
+          "id": 1,
+          "name": "watch test",
+          "pathName": "pages/watch/watch",
+          "query": ""
+        },
+        {
+          "id": -1,
+          "name": "computed test",
+          "pathName": "pages/computed/computed",
+          "query": ""
+        }
+      ]
     }
   }
 }

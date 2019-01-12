@@ -1,0 +1,5 @@
+<comp prop-a="{{propA}}" bindupdate="onUpdate"></comp>
+<view >{{name}}</view>
+<view >test</view>
+
+
