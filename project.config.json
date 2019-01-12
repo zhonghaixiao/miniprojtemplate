@@ -15,7 +15,7 @@
   "libVersion": "2.5.0",
   "miniprogramRoot": "dist/",
   "appid": "wx93232cfc6a0a70b9",
-  "projectname": "minitemplate",
+  "projectname": "template",
   "debugOptions": {
     "hidedInDevtools": []
   },
