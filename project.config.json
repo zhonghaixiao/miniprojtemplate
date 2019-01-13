@@ -39,7 +39,7 @@
       "list": []
     },
     "miniprogram": {
-      "current": 2,
+      "current": 3,
       "list": [
         {
           "id": -1,
@@ -58,6 +58,11 @@
           "name": "computed test",
           "pathName": "pages/computed/computed",
           "query": ""
+        },
+        {
+          "id": -1,
+          "name": "mywatch",
+          "pathName": "pages/mywatch/mywatch"
         }
       ]
     }

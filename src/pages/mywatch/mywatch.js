@@ -8,5 +8,9 @@ Page({
   },
   onLoad: function() {
     this.setData({ message: "zhong hello" });
+  },
+  childclick: function(e) {
+    console.log("childclick");
+    console.log(e);
   }
 });

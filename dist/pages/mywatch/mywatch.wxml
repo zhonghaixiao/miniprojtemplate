@@ -1,2 +1,5 @@
-<view class='watch-container'> my watch test page</view>
-<view >{{message}}</view>
+<view class='watch-container'>my watch test page</view>
+<view>{{message}}</view>
+<first-com inner-text='hello zhong haixiao' bind:click='childclick'>
+    <view>test slot</view>
+</first-com>

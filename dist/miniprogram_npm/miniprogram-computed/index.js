@@ -140,11 +140,14 @@ module.exports = /******/ (function(modules) {
             this._originalSetData = this.setData;
             this.setData = this._setData;
             this._doingSetData = false;
+            this._doingSetProps = false;
           }
         },
         definitionFilter: function definitionFilter(defFields) {
           var computed = defFields.computed || {};
           var computedKeys = Object.keys(computed);
+          var properties = defFields.properties || {};
+          var propertyKeys = Object.keys(properties);
 
           // 计算 computed
           var calcComputed = function calcComputed(scope) {
@@ -174,9 +177,8 @@ module.exports = /******/ (function(modules) {
 
             // 先将 properties 里的字段写入到 data 中
             var data = defFields.data;
-            var properties = defFields.properties;
             var hasOwnProperty = Object.prototype.hasOwnProperty;
-            if (properties) {
+            if (propertyKeys.length) {
               // eslint-disable-next-line complexity
               Object.keys(properties).forEach(function(key) {
                 var value = properties[key];
@@ -216,6 +218,20 @@ module.exports = /******/ (function(modules) {
                 properties[key].observer = function() {
                   var originalSetData = this._originalSetData;
 
+                  for (
+                    var _len = arguments.length, args = Array(_len), _key = 0;
+                    _key < _len;
+                    _key++
+                  ) {
+                    args[_key] = arguments[_key];
+                  }
+
+                  if (this._doingSetProps) {
+                    // 调用 setData 设置 properties
+                    if (oldObserver) oldObserver.apply(this, args);
+                    return;
+                  }
+
                   if (this._doingSetData) {
                     // eslint-disable-next-line no-console
                     console.warn(
@@ -233,14 +249,6 @@ module.exports = /******/ (function(modules) {
                   originalSetData.call(this, needUpdate);
 
                   this._doingSetData = false;
-
-                  for (
-                    var _len = arguments.length, args = Array(_len), _key = 0;
-                    _key < _len;
-                    _key++
-                  ) {
-                    args[_key] = arguments[_key];
-                  }
 
                   if (oldObserver) oldObserver.apply(this, args);
                 };
@@ -271,6 +279,8 @@ module.exports = /******/ (function(modules) {
               var key = dataKeys[i];
 
               if (computed[key]) delete data[key];
+              if (!this._doingSetProps && propertyKeys.indexOf(key) >= 0)
+                this._doingSetProps = true;
             }
 
             // 做 data 属性的 setData
@@ -283,6 +293,7 @@ module.exports = /******/ (function(modules) {
             originalSetData.call(this, needUpdate);
 
             this._doingSetData = false;
+            this._doingSetProps = false;
           };
         }
       });

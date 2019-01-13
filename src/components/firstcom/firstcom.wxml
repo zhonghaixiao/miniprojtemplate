@@ -1,0 +1,7 @@
+<view class='inner'>{{innerText}}</view>
+<slot></slot>
+<view class='inner'>{{innerText}}</view>
+<button bindtap='onclick'>trigger</button>
+<view>data: {{a}}</view>
+<view>computed: {{b}}</view>
+<button bindtap="onTap">click</button>
